@@ -14,6 +14,8 @@ public class CalcularDistancia extends javax.swing.JFrame {
     /**
      * Creates new form CalcularDistancia
      */
+    double resultado, X2,X1,Y2,Y1;
+    FormulaDistancia formula = new FormulaDistancia();
     public CalcularDistancia() {
         initComponents();
        
@@ -67,6 +69,11 @@ public class CalcularDistancia extends javax.swing.JFrame {
         lbResultado.setText("Resultado");
 
         btnCalcular.setText("Calcular Distancia");
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcularActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,6 +132,20 @@ public class CalcularDistancia extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
+        // TODO add your handling code here:
+        try {
+        X2=Double.parseDouble(txtX2.getText());
+        X1=Double.parseDouble(txtX1.getText());
+        Y2=Double.parseDouble(txtY2.getText());
+        Y1=Double.parseDouble(txtY1.getText());
+        resultado = formula.ResultadoFormula(X2,X1,Y2,Y1);
+        lbResultado.setText("La distancia es de: " + resultado);
+        } catch (Exception e) {
+            lbResultado.setText("Faltan Caampos por llenar");
+        }
+    }//GEN-LAST:event_btnCalcularActionPerformed
 
     /**
      * @param args the command line arguments
